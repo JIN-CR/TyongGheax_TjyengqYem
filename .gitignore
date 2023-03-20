@@ -1,0 +1,12 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# test files
+test/
+
+# User-specific files
+.vscode/
+
+# TODO
+offline.html

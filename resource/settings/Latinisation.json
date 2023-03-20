@@ -1,0 +1,32 @@
+{
+  "copyright": ["JIN.C-R@outlook.com", "PekJyang@outlook.com"], 
+  "sjeng": {
+    "p": "p", "pʰ": "ph", "b": "b", "m": "m", 
+    "t": "t", "tʰ": "th", "d": "d", "n": "n", 
+    "k": "k", "kʰ": "kh", "g": "g", "ŋ": "ng", 
+    "ts": "tz", "tsʰ": "ts", "dz": "dz", "s": "s", "z": "z", 
+    
+    "tʃ": "zh", "tʃʰ": "ch", "dʒ": "dr", "ʃ": "sh", "ʒ": "r", 
+    "tɕ": "tj", "tɕʰ": "cj", "dʑ": "dj", "ɕ": "sj", "ʑ": "zj", 
+    
+    "l": "l", "ȵ": "nj", 
+    "ʔ": "", "x": "h", "ɣ": "gh", 
+    "j": "j"
+  }, 
+  "yonh": {
+    "ə": "ee", "ɐ": "aa", "ɔ": "oo", "æ": "ae", "i̯": "y", "ŋ": "ng"
+  },
+  "deuh": {
+    "˥˥": "", "˧˥": "x", "˥˧": "q", "˥": ""
+  },
+
+  "replace": {
+                                      "yeem" : "yem",  "yeep" : "yep", 
+
+    "yaai" : "yai",  "yaan" : "yan",  "yaam" : "yam",  "yaap" : "yap",  "yaat" : "yat", 
+    "yuaai": "yuai", "yuaan": "yuan", "yuaam": "yuam", "yuaap": "yuap", "yuaat": "yuat", 
+
+    "iaei" : "iai",  "iaen" : "ian",  "iaem" : "iam",  "iaep" : "iap",  "iaet" : "iat", 
+    "iuaei": "iuai", "iuaen": "iuan",                                   "iuaet": "iuat"
+  }
+}

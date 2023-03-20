@@ -1,0 +1,29 @@
+{
+  "copyright": ["JIN.C-R@outlook.com", "PekJyang@outlook.com"],
+  "replace": {
+    "doubleMiuk": ["東", "麻", "庚"],
+    "sameMiuk": { "眞": "諄", "寒": "桓", "歌": "戈" },
+    "update_meaning": [
+      "東",
+      "冬鍾江支脂微佳灰文元魂刪山仙先麻陽唐庚庚耕清青尤侯幽凡",
+      "冬鍾江灰文魂尤侯幽凡",
+      "齊皆",
+      "祭泰夬廢",
+      "眞",
+      "戈",
+      "蒸",
+      "登"
+    ],
+    "update": {
+      "B": ["B", "J"],
+      "CDEFGIPSXZadefgnpqrstuvyz09": ["IJKL", "ABCD"],
+      "CDESXayz09": ["ABCD", "MNOP"],
+      "MQ": ["IK", "AC"],
+      "NORU": ["K", "C"],
+      "V": ["MNP", "ABD"],
+      "m": ["IJBC", "ABJK"],
+      "w": ["L", "D"],
+      "x": ["IL", "AD"]
+    }
+  }
+}
