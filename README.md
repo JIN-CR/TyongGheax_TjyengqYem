@@ -25,23 +25,23 @@ TyongGheax-TjyengqYem
 │   │   ├── YonhMiuk_IPA.csv
 │   │   └── YonhMiuk.csv
 │   ├── raw/
-│   │   ├── qieyun@0.13.4/        # 文本來源於 qieyun-js 項目中所提及鏈接
+│   │   ├── qieyun@0.13.4/          # 文本來源於 qieyun-js 項目中所提及鏈接
 │   │   │   ├── index.js
 │   │   │   ├── qieyun@0.13.4.js
 │   │   │   └── qieyun@0.13.4.txt
-│   │   └── YonhMiuk.txt          # 韻目表，來源於“韻典網”
+│   │   └── YonhMiuk.txt            # 韻目表，來源於“韻典網”
 │   ├── rules/
-│   │   ├── revise.json           # 針對切韻文本的修正設定
-│   │   └── Yonh_table.json       # 針對韻母表格的修正設定
+│   │   ├── revise.json             # 針對切韻文本的修正設定
+│   │   └── Yonh_table.json         # 針對韻母表格的修正設定
 │   └── settings/
-│       ├── Latinisation.json     # 拉丁化設定
-│       ├── SjengMux.json         # 聲母設定
-│       └── YonhMiuk.json         # 韻母設定
+│       ├── Latinisation.json       # 拉丁化設定
+│       ├── SjengMux.json           # 聲母設定
+│       └── YonhMiuk.json           # 韻母設定
 ├── scripts/
 │   ├── function.py
 │   └── run.py
 ├── .gitignore
-├── KuangxGhyuenq.json            # 整合後的最終文本數據
+├── KuangxGhyuenq.json              # 整合後的最終文本數據
 ├── README.md
 └── requirements.txt
 ```
