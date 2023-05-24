@@ -244,9 +244,11 @@ def table_to_json(table, path=None):
             f.write(json.dumps(newjson, indent=4, separators=(',', ': '), ensure_ascii=False))
     return newjson
 
-def read_KuangxYonh(path="./resource/coproducts/KuangxYonh.txt"):
+def read_KuangxYonh(path="./resource/coproducts/KuangxYonh.txt", save=False):
     """
     從格式化的《廣韻》文件中讀取信息。
+
+    將生成的表格保存在“./resource/coproducts/KuangxYonh.json”路徑下，默認不保存。
     """
     with open(path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -262,47 +264,62 @@ def read_KuangxYonh(path="./resource/coproducts/KuangxYonh.txt"):
             char_list.append(i[0])
             yonhmiuk.append(i[1])
             meaning.append(re.sub('\n', '', i[2:]))
-    return {
-        "pyanxchet": pyanxchet, 
-        "char_list": char_list, 
-        "symbol": symbol, 
-        "meaning": meaning
+    sjeng_mux = [i[0] for i in symbol]
+    yonh_miuk = [i[2:4] for i in symbol]
+    KuangxYonh_json = {
+        "CHAR": char_list, 
+        "PYANXCHET": pyanxchet, 
+        "MEANING": meaning, 
+        "SJENGMUX_symbol": sjeng_mux, 
+        "YONHMIUK_symbol": yonh_miuk
     }
+    # 保存文件
+    if save:
+        with open("./resource/coproducts/KuangxYonh.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(KuangxYonh_json, indent=4, separators=(',', ': '), ensure_ascii=False))
+    return KuangxYonh_json
 
-def create_SjengYonh(symbol, sjeng_json, yonh_json, IPA_json, Alphabet_rules):
+def create_SjengYonh(sjeng_mux, yonh_miuk, sjeng_json, yonh_json, IPA_json, Alphabet_rules, save=False):
     """
     創建包含聲韻信息的 json 格式數據。
+
+    將生成的表格保存在“./resource/coproducts/SjengYonh.json”路徑下，默認不保存。
     """
     SjengYonh = []; SjengYonh_IPA = []; SjengYonh_Alphabet = []
-    for item in symbol:#[:10]:
+    for i in range(len(sjeng_mux)):#[:10]:
         # print('\n', item)
-        [(sjeng, sjeng_IPA)] = sjeng_json[item[0]].items()
-        SjengYonh.append(sjeng + yonh_json[item[2]][item[3]])
-        SjengYonh_IPA.append(sjeng_IPA + IPA_json[item[2]][item[3]])
-        # Alphabet = sjeng_IPA + IPA_json[item[2]][item[3]]
+        [(sjeng, sjeng_IPA)] = sjeng_json[sjeng_mux[i]].items()
+        SjengYonh.append(sjeng + yonh_json[yonh_miuk[i][0]][yonh_miuk[i][1]])
+        SjengYonh_IPA.append(sjeng_IPA + IPA_json[yonh_miuk[i][0]][yonh_miuk[i][1]])
+        # Alphabet = sjeng_IPA + IPA_json[yonh_miuk[i][0]][yonh_miuk[i][1]]
         # for ipa, alphabet in Alphabet_rules.items():
         #     Alphabet = re.sub(ipa, alphabet, Alphabet)
-        yonhmiuk_IPA = IPA_json[item[2]][item[3]]
+        yonhmiuk_IPA = IPA_json[yonh_miuk[i][0]][yonh_miuk[i][1]]
         deuh_IPA = re.sub("\S*[^˥˧]", "", yonhmiuk_IPA)
         yonh_IPA = re.sub(deuh_IPA, "", yonhmiuk_IPA)
-        # if item[0] == "Y": 
+        # if sjeng_mux[i] == "Y": 
         #     print(yonhmiuk_IPA, yonh_IPA + " " + deuh_IPA)
         sjeng_Alphabet = re.sub(sjeng_IPA, Alphabet_rules["sjeng"][sjeng_IPA], sjeng_IPA)
         yonh_Alphabet = yonh_IPA
         for k, v in Alphabet_rules["yonh"].items():
             yonh_Alphabet = re.sub(k, v, yonh_Alphabet)
         deuh_Alphabet = re.sub(deuh_IPA, Alphabet_rules["deuh"][deuh_IPA], deuh_IPA)
-        # if item[0] == "Y": 
+        # if sjeng_mux[i] == "Y": 
         #     print(yonh_Alphabet + deuh_Alphabet + '|')
         Alphabet = sjeng_Alphabet + yonh_Alphabet + deuh_Alphabet
         for k, v in Alphabet_rules["replace"].items():
             Alphabet = re.sub(k, v, Alphabet)
         SjengYonh_Alphabet.append(Alphabet)
-    return {
+    SjengYonh_json = {
         "SjengYonh": SjengYonh, 
         "SjengYonh_IPA": SjengYonh_IPA, 
         "SjengYonh_Alphabet": SjengYonh_Alphabet
     }
+    # 保存文件
+    if save:
+        with open("./resource/coproducts/SjengYonh.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(SjengYonh_json, indent=4, separators=(',', ': '), ensure_ascii=False))
+    return SjengYonh_json
 
 def create_KuangxYonh_json(KuangxYonh_text, SjengYonh_info, path=None):#"./KuangxYonh.json"):
     """
@@ -310,11 +327,9 @@ def create_KuangxYonh_json(KuangxYonh_text, SjengYonh_info, path=None):#"./Kuang
 
     將 json 格式的數據保存在指定路徑下，默認不保存。
     """
-    pyanxchet, char_list, symbol, meaning = KuangxYonh_text["pyanxchet"], KuangxYonh_text["char_list"], KuangxYonh_text["symbol"], KuangxYonh_text["meaning"]
+    pyanxchet, char_list, sjeng_mux, yonh_miuk, meaning = KuangxYonh_text["PYANXCHET"], KuangxYonh_text["CHAR"], KuangxYonh_text["SJENGMUX_symbol"], KuangxYonh_text["YONHMIUK_symbol"], KuangxYonh_text["MEANING"]
     SjengYonh, SjengYonh_IPA, SjengYonh_Alphabet = SjengYonh_info["SjengYonh"], SjengYonh_info["SjengYonh_IPA"], SjengYonh_info["SjengYonh_Alphabet"]
 
-    cjeng_mux = [i[0] for i in symbol]
-    yonh_miuk = [i[2:4] for i in symbol]
     json_text = []
     for i in range(len(char_list)):
         json_text.append(
@@ -324,7 +339,7 @@ def create_KuangxYonh_json(KuangxYonh_text, SjengYonh_info, path=None):#"./Kuang
             "SJENGYONH_IPA":SjengYonh_IPA[i], 
             "SJENGYONH_ALPHABET":SjengYonh_Alphabet[i], 
             "MEANING":meaning[i], 
-            "SJENGMUX_symbol":cjeng_mux[i],
+            "SJENGMUX_symbol":sjeng_mux[i],
             "YONHMIUK_symbol":yonh_miuk[i]}
         )
     # json_text = json.dumps(json_text, indent=4, separators=(',', ': '), ensure_ascii=False)
@@ -363,7 +378,7 @@ def merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, path):
 #     """
 #     if os.path.isfile(path):
 #         os.remove(path)
-#     cjeng_mux = [i[0] for i in yonh]
+#     sjeng_mux = [i[0] for i in yonh]
 #     yonh_miuk = [i[2:4] for i in yonh]
 #     conn = sqlite3.connect(path)
 #     cursor = conn.cursor()
@@ -376,7 +391,7 @@ def merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, path):
 #     for i in range(len(char_list)):
 #         cursor.execute("INSERT INTO YONH (CHAR, SJENGMUX, YONHMIUK, MEANING) \
 #             VALUES(?, ?, ?, ?)", 
-#             (char_list[i], cjeng_mux[i], yonh_miuk[i], meaning[i]))
+#             (char_list[i], sjeng_mux[i], yonh_miuk[i], meaning[i]))
 #     conn.commit()
 #     cursor.close()
 #     conn.close()

@@ -39,11 +39,11 @@ if __name__ == "__main__":
     """
     # store_database(char_list, symbol, meaning) # 已棄用
     # char_list, symbol, meaning = read_KuangxYonh()
-    KuangxYonh_text = read_KuangxYonh()
+    KuangxYonh_text = read_KuangxYonh(save=True)
     # print(KuangxYonh_text["symbol"])
     # item = "N mJ"; # print(sjeng_json[item[0]].keys()); print(yonh_json[item[2]][item[3]]); # [(sjeng, sjeng_IPA)] = sjeng_json[item[0]].items(); # print(sjeng)
     Alphabet_rules = read_rules("./resource/settings/Latinisation.json")
-    SjengYonh_info = create_SjengYonh(KuangxYonh_text["symbol"], sjeng_json, yonh_json, IPA_json, Alphabet_rules)
+    SjengYonh_info = create_SjengYonh(KuangxYonh_text["SJENGMUX_symbol"], KuangxYonh_text["YONHMIUK_symbol"], sjeng_json, yonh_json, IPA_json, Alphabet_rules, save=True)
     # print(SjengYonh_info["SjengYonh"][:10])
     # print(SjengYonh_info["SjengYonh_IPA"][:10])
     # print(SjengYonh_info["SjengYonh_Alphabet"][:10])
@@ -54,5 +54,5 @@ if __name__ == "__main__":
     """
     5. 合并所有 json 格式信息. 
     """
-    merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, "KuangxGhyuenq.json")
+    merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, "KuangxGhyueenq.json")
 
