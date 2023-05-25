@@ -1,0 +1,426 @@
+{
+    "A": {
+        "A": "ong",
+        "B": "ongx",
+        "C": "ongq",
+        "D": "ok"
+    },
+    "B": {
+        "A": "yong",
+        "C": "yongq",
+        "D": "yok"
+    },
+    "C": {
+        "I": "ung",
+        "J": "ungx",
+        "K": "ungq",
+        "L": "uk"
+    },
+    "D": {
+        "I": "yung",
+        "J": "yungx",
+        "K": "yungq",
+        "L": "yuk"
+    },
+    "E": {
+        "I": "eung",
+        "J": "eungx",
+        "K": "eungq",
+        "L": "euk"
+    },
+    "F": {
+        "A": "ye",
+        "B": "yex",
+        "C": "yeq",
+        "I": "yue",
+        "J": "yuex",
+        "K": "yueq"
+    },
+    "G": {
+        "A": "yei",
+        "B": "yeix",
+        "C": "yeiq",
+        "I": "yuei",
+        "J": "yueix",
+        "K": "yueiq"
+    },
+    "H": {
+        "A": "yee",
+        "B": "yeex",
+        "C": "yeeq"
+    },
+    "I": {
+        "A": "yeei",
+        "B": "yeeix",
+        "C": "yeeiq",
+        "I": "yueei",
+        "J": "yueeix",
+        "K": "yueeiq"
+    },
+    "J": {
+        "A": "yoo",
+        "B": "yoox",
+        "C": "yooq"
+    },
+    "K": {
+        "A": "yo",
+        "B": "yox",
+        "C": "yoq"
+    },
+    "L": {
+        "A": "o",
+        "B": "ox",
+        "C": "oq"
+    },
+    "M": {
+        "A": "iai",
+        "B": "iaix",
+        "C": "iaiq",
+        "I": "iuai",
+        "K": "iuaiq"
+    },
+    "N": {
+        "C": "yaeiq",
+        "K": "yuaeiq"
+    },
+    "O": {
+        "C": "aiq",
+        "K": "uaiq"
+    },
+    "P": {
+        "A": "eai",
+        "B": "eaix",
+        "C": "eaiq",
+        "I": "oai",
+        "J": "oaix",
+        "K": "oaiq"
+    },
+    "Q": {
+        "A": "eaai",
+        "B": "eaaix",
+        "C": "eaaiq",
+        "I": "oaai",
+        "K": "oaaiq"
+    },
+    "R": {
+        "C": "eaeiq",
+        "K": "oaeiq"
+    },
+    "S": {
+        "I": "uaai",
+        "J": "uaaix",
+        "K": "uaaiq"
+    },
+    "T": {
+        "A": "aai",
+        "B": "aaix",
+        "C": "aaiq"
+    },
+    "U": {
+        "C": "yaiq",
+        "K": "yuaiq"
+    },
+    "V": {
+        "A": "yen",
+        "B": "yenx",
+        "C": "yenq",
+        "D": "yet",
+        "I": "yuen",
+        "J": "yuenx",
+        "K": "yuenq",
+        "L": "yuet",
+        "M": "yuen",
+        "N": "yuenx",
+        "P": "yuet"
+    },
+    "W": {
+        "A": "en",
+        "B": "enx",
+        "C": "enq",
+        "D": "et"
+    },
+    "X": {
+        "I": "yueen",
+        "J": "yueenx",
+        "K": "yueenq",
+        "L": "yueet"
+    },
+    "Y": {
+        "A": "yeen",
+        "B": "yeenx",
+        "C": "yeenq",
+        "D": "yeet"
+    },
+    "Z": {
+        "A": "yan",
+        "B": "yanx",
+        "C": "yanq",
+        "D": "yat",
+        "I": "yuan",
+        "J": "yuanx",
+        "K": "yuanq",
+        "L": "yuat"
+    },
+    "a": {
+        "I": "uaan",
+        "J": "uaanx",
+        "K": "uaanq",
+        "L": "uaat"
+    },
+    "b": {
+        "A": "aan",
+        "B": "aanx",
+        "C": "aanq",
+        "D": "aat"
+    },
+    "c": {
+        "A": "an",
+        "B": "anx",
+        "C": "anq",
+        "D": "at",
+        "I": "uan",
+        "J": "uanx",
+        "K": "uanq",
+        "L": "uat"
+    },
+    "d": {
+        "A": "ean",
+        "B": "eanx",
+        "C": "eanq",
+        "D": "eat",
+        "I": "oan",
+        "J": "oanx",
+        "K": "oanq",
+        "L": "oat"
+    },
+    "e": {
+        "A": "eaen",
+        "B": "eaenx",
+        "C": "eaenq",
+        "D": "eaet",
+        "I": "oaen",
+        "J": "oaenx",
+        "K": "oaenq",
+        "L": "oaet"
+    },
+    "f": {
+        "A": "yaen",
+        "B": "yaenx",
+        "C": "yaenq",
+        "D": "yaet",
+        "I": "yuaen",
+        "J": "yuaenx",
+        "K": "yuaenq",
+        "L": "yuaet"
+    },
+    "g": {
+        "A": "ian",
+        "B": "ianx",
+        "C": "ianq",
+        "D": "iat",
+        "I": "iuan",
+        "J": "iuanx",
+        "K": "iuanq",
+        "L": "iuat"
+    },
+    "h": {
+        "A": "iou",
+        "B": "ioux",
+        "C": "iouq"
+    },
+    "i": {
+        "A": "you",
+        "B": "youx",
+        "C": "youq"
+    },
+    "j": {
+        "A": "eou",
+        "B": "eoux",
+        "C": "eouq"
+    },
+    "k": {
+        "A": "ou",
+        "B": "oux",
+        "C": "ouq"
+    },
+    "l": {
+        "A": "a",
+        "B": "ax",
+        "C": "aq",
+        "I": "ua",
+        "J": "uax",
+        "K": "uaq"
+    },
+    "m": {
+        "A": "ya",
+        "I": "yua",
+        "J": "yax"
+    },
+    "n": {
+        "A": "ea",
+        "B": "eax",
+        "C": "eaq",
+        "I": "oa",
+        "J": "oax",
+        "K": "oaq"
+    },
+    "o": {
+        "A": "ya",
+        "B": "yax",
+        "C": "yaq"
+    },
+    "p": {
+        "A": "yang",
+        "B": "yangx",
+        "C": "yangq",
+        "D": "yak",
+        "I": "yuang",
+        "J": "yuangx",
+        "K": "yuangq",
+        "L": "yuak"
+    },
+    "q": {
+        "A": "ang",
+        "B": "angx",
+        "C": "angq",
+        "D": "ak",
+        "I": "uang",
+        "J": "uangx",
+        "K": "uangq",
+        "L": "uak"
+    },
+    "r": {
+        "A": "eng",
+        "B": "engx",
+        "C": "engq",
+        "D": "ek",
+        "I": "ong",
+        "J": "ongx",
+        "K": "ongq",
+        "L": "ok"
+    },
+    "s": {
+        "A": "yeng",
+        "B": "yengx",
+        "C": "yengq",
+        "D": "yek",
+        "I": "yueng",
+        "J": "yuengx",
+        "K": "yuengq",
+        "L": "yuek"
+    },
+    "t": {
+        "A": "eng",
+        "B": "engx",
+        "C": "engq",
+        "D": "ek",
+        "I": "ong",
+        "J": "ongx",
+        "K": "ongq",
+        "L": "ok"
+    },
+    "u": {
+        "A": "yeng",
+        "B": "yengx",
+        "C": "yengq",
+        "D": "yek",
+        "I": "yueng",
+        "J": "yuengx",
+        "K": "yuengq",
+        "L": "yuek"
+    },
+    "v": {
+        "A": "ieng",
+        "B": "iengx",
+        "C": "iengq",
+        "D": "iek",
+        "I": "iueng",
+        "J": "iuengx",
+        "K": "iuengq",
+        "L": "iuek"
+    },
+    "w": {
+        "A": "yeeng",
+        "B": "yeengx",
+        "C": "yeengq",
+        "D": "yeek",
+        "L": "yueek"
+    },
+    "x": {
+        "A": "aang",
+        "B": "aangx",
+        "C": "aangq",
+        "D": "aak",
+        "I": "uaang",
+        "L": "uaak"
+    },
+    "y": {
+        "I": "yu",
+        "J": "yux",
+        "K": "yuq"
+    },
+    "z": {
+        "I": "u",
+        "J": "ux",
+        "K": "uq"
+    },
+    "0": {
+        "I": "iu",
+        "J": "iux",
+        "K": "iuq"
+    },
+    "1": {
+        "A": "yem",
+        "B": "yemx",
+        "C": "yemq",
+        "D": "yep"
+    },
+    "2": {
+        "A": "am",
+        "B": "amx",
+        "C": "amq",
+        "D": "ap"
+    },
+    "3": {
+        "A": "aem",
+        "B": "aemx",
+        "C": "aemq",
+        "D": "aep"
+    },
+    "4": {
+        "A": "yaem",
+        "B": "yaemx",
+        "C": "yaemq",
+        "D": "yaep"
+    },
+    "5": {
+        "A": "iam",
+        "B": "iamx",
+        "C": "iamq",
+        "D": "iap"
+    },
+    "6": {
+        "A": "eam",
+        "B": "eamx",
+        "C": "eamq",
+        "D": "eap"
+    },
+    "7": {
+        "A": "eaem",
+        "B": "eaemx",
+        "C": "eaemq",
+        "D": "eaep"
+    },
+    "8": {
+        "A": "yam",
+        "B": "yamx",
+        "C": "yamq",
+        "D": "yap"
+    },
+    "9": {
+        "I": "yuam",
+        "J": "yuamx",
+        "K": "yuamq",
+        "L": "yuap"
+    }
+}

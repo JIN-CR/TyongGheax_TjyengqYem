@@ -10,6 +10,12 @@
 
 本項目以王力先生的著作《漢語語音史》爲依據，擬定六朝中古漢語音韻。
 
+## 項目說明
+
+- [聲韻設定](./docs/聲韻.md)：本項目沿用具體聲韻設定。
+- [數據說明](./docs/數據說明.md)：本項目所用數據具體說明。
+- [拼音方案](./docs/拉丁化.md)：本項目所擬定拉丁化方案。
+
 ## 項目結構
 
 ```
@@ -17,34 +23,46 @@ TyongGheax-TjyengqYem
 ├── docs/
 │   ├── 拉丁化.md
 │   ├── 聲韻.md
-│   └── 數據說明.md          
+│   └── 數據說明.md
+├── output/
+│   ├── KuangxYonh.json
+│   ├── sjeng.json
+│   ├── yonh_Alphabet.json
+│   ├── yonh_IPA.json
+│   └── yonh.json
 ├── resource/
 │   ├── coproducts/
+│   │   ├── KuangxYonh_info.json
 │   │   ├── KuangxYonh.txt
 │   │   ├── Yonh_table.csv
+│   │   ├── YonhMiuk_Alphabet.csv
 │   │   ├── YonhMiuk_IPA.csv
 │   │   └── YonhMiuk.csv
 │   ├── raw/
-│   │   ├── qieyun@0.13.4/          # 文本來源於 qieyun-js 項目中所提及鏈接
+│   │   ├── qieyun@0.13.4/			# 文本來源於 qieyun-js 項目中所提及鏈接
 │   │   │   ├── index.js
 │   │   │   ├── qieyun@0.13.4.js
 │   │   │   └── qieyun@0.13.4.txt
-│   │   └── YonhMiuk.txt            # 韻目表，來源於“韻典網”
+│   │   └── YonhMiuk.txt			# 韻目表，來源於“韻典網”
 │   ├── rules/
-│   │   ├── revise.json             # 針對切韻文本的修正設定
-│   │   └── Yonh_table.json         # 針對韻母表格的修正設定
+│   │   ├── revise.json				# 針對切韻文本的修正設定
+│   │   └── Yonh_table.json			# 針對韻母表格的修正設定
 │   └── settings/
-│       ├── Latinisation.json       # 拉丁化設定
-│       ├── SjengMux.json           # 聲母設定
-│       └── YonhMiuk.json           # 韻母設定
+│       ├── Latinisation.json		# 拉丁化設定
+│       ├── SjengMux.json			# 聲母設定
+│       └── YonhMiuk.json			# 韻母設定
 ├── scripts/
 │   ├── function.py
-│   └── run.py
+│   ├── run.py
+│   └── runMySQL.py
 ├── .gitignore
-├── KuangxGhyuenq.json              # 整合後的最終文本數據
+├── KuangxGhyueenq.json				# 整合後的最終文本數據
 ├── README.md
 └── requirements.txt
 ```
+
+- 最終總合文件爲 `KuangxGhyueenq.json`，爲 json 格式。兹提供流程代碼，產生該文件的每一步過程均可復現。
+- `runMySQL.py` 乃爲欲使用 SQL 數據庫者提供，不影響其他部分運行，可忽視。
 
 ## 參考
 
@@ -52,9 +70,9 @@ TyongGheax-TjyengqYem
 
 <!-- 魏晋南北朝音系（220—581）[M] // 王力. 汉语语音史: 卷上. 北京: 中華書局, 2014: 108-161. -->
 
-[王力. 汉语语音史](https://downloads.freemdict.com/uploads/manjushri/分流/王力全集(全25卷)/王力全集02.汉语语音史.pdf)[M]. 北京: 中華書局, 2014.
+[王力. 汉语语音史](<https://downloads.freemdict.com/uploads/manjushri/分流/王力全集(全25卷)/王力全集02.汉语语音史.pdf>)[M]. 北京: 中華書局, 2014.
 
-[王力. 中国语言学史](https://downloads.freemdict.com/uploads/manjushri/分流/王力全集(全25卷)/王力全集05.中国语言学史.pdf)[M]. 北京: 中華書局, 2013.
+[王力. 中国语言学史](<https://downloads.freemdict.com/uploads/manjushri/分流/王力全集(全25卷)/王力全集05.中国语言学史.pdf>)[M]. 北京: 中華書局, 2013.
 
 <!-- [GitHub@nk2028/qieyun-js](https://github.com/nk2028/qieyun-js#Usage) [#Usage](https://cdn.jsdelivr.net/npm/qieyun@0.13.4) -->
 

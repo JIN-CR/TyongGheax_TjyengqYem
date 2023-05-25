@@ -48,23 +48,24 @@ def revise_qieyun(text, rules, path="./resource/coproducts/KuangxYonh.txt"):
         f.write(text)
     print("格式化的《廣韻》 txt 文件已創建。\n")
 
-def create_sjengmux_json(rules, path=None):
+def create_sjengmux_json(rules, Alphabet_rules, path=None):
     """
-    生成“符號: {聲母:音標}”格式的 json 數據。
+    生成 "符號: {聲母:[音標, 音標拼音]} "格式的 json 數據。
 
     將 json 格式的數據保存在指定路徑下，默認不保存。
     """
-    # 聲(母)，多“知徹澄孃”、“云”
+    # 聲(母)，多 "知徹澄孃 "、 "云 "
     # 云, 以
     SJENGMUX = rules["SJENGMUX"]
     sjeng_info = rules["sjeng_info"]
     # print([k for k, v in sjeng.items()] == sjeng_list)
-    sjeng_info_list = [{k: v} for k, v in sjeng_info.items()]
+    sjeng_info_list = [{k: [v, Alphabet_rules[v]]} for k, v in sjeng_info.items()]
     sjeng = dict(zip(SJENGMUX, sjeng_info_list))
     if path:
         with open(path, "w", encoding="utf-8") as f:
             f.write(json.dumps(sjeng, indent=4, separators=(',', ': '), ensure_ascii=False))
-    # print("聲母 json 文件已創建（可選）。")
+        # print("聲母 json 文件已創建（可選）。")
+        print("聲母 json 文件已創建。\n")
     return sjeng
 
 def read_YonhMiuk(path='./resource/coproducts/Yonh_table.csv'):
@@ -117,7 +118,7 @@ def create_YonhMiuk_table(table, table_rules, yonh_rules, save=False):
     """
     生成 pandas 格式的韻母表格。(需要 pandas 庫。)
 
-    將生成的表格保存在“./resource/coproducts/YonhMiuk.csv”路徑下，默認不保存。
+    將生成的表格保存在 "./resource/coproducts/YonhMiuk.csv "路徑下，默認不保存。
     """
     table_khai = table
     # g先f仙順序
@@ -167,13 +168,14 @@ def create_YonhMiuk_table(table, table_rules, yonh_rules, save=False):
     # 保存文件
     if save:
         table.to_csv('./resource/coproducts/YonhMiuk.csv', index=True, encoding='utf-8-sig')
+        print("- 韻母表已保存。")
     return table
 
 def create_YonhMiuk_IPA_table(table, rules, save=False):
     """
     生成 pandas 格式的韻母音標表格。(需要 pandas 庫。)
 
-    將生成的表格保存在“./resource/coproducts/YonhMiuk_IPA.csv”路徑下，默認不保存。
+    將生成的表格保存在 "./resource/coproducts/YonhMiuk_IPA.csv" 路徑下，默認不保存。
     """
     IPA_table = table.copy()
     # 以音標覆蓋
@@ -221,9 +223,26 @@ def create_YonhMiuk_IPA_table(table, rules, save=False):
     # 保存文件
     if save:
         IPA_table.to_csv("./resource/coproducts/YonhMiuk_IPA.csv", index=True, encoding='utf-8-sig')
+        print("- 韻母音標表已保存。")
     return IPA_table
 
-def table_to_json(table, path=None):
+def create_YonhMiuk_Alphabet_table(table, rules, save=False):
+    """
+    生成 pandas 格式的韻母拼音表格。(需要 pandas 庫。)
+
+    將生成的表格保存在 "./resource/coproducts/YonhMiuk_Alphabet.csv "路徑下，默認不保存。
+    """
+    Alphabet_table = table.copy()
+    Alphabet_table = Alphabet_table.replace(rules["yonh"].keys(), rules["yonh"].values(), regex=True)
+    Alphabet_table = Alphabet_table.replace(rules["deuh"].keys(), rules["deuh"].values(), regex=True)
+    Alphabet_table = Alphabet_table.replace(rules["replace"].keys(), rules["replace"].values(), regex=True)
+    # 保存文件
+    if save:
+        Alphabet_table.to_csv("./resource/coproducts/YonhMiuk_Alphabet.csv", index=True, encoding='utf-8-sig')
+        print("- 韻母拼音表已保存。")
+    return Alphabet_table
+
+def table_to_json(table, name="", path=None):
     """
     將 pandas 表格轉化爲 json 格式。(需要 pandas, json 庫。)
 
@@ -242,13 +261,14 @@ def table_to_json(table, path=None):
     if path:
         with open(path, "w", encoding="utf-8") as f:
             f.write(json.dumps(newjson, indent=4, separators=(',', ': '), ensure_ascii=False))
+        print(name + " json 文件已創建。")
     return newjson
 
 def read_KuangxYonh(path="./resource/coproducts/KuangxYonh.txt", save=False):
     """
     從格式化的《廣韻》文件中讀取信息。
 
-    將生成的表格保存在“./resource/coproducts/KuangxYonh.json”路徑下，默認不保存。
+    將生成的表格保存在 "./resource/coproducts/KuangxYonh_info.json "路徑下，默認不保存。
     """
     with open(path, 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -275,20 +295,21 @@ def read_KuangxYonh(path="./resource/coproducts/KuangxYonh.txt", save=False):
     }
     # 保存文件
     if save:
-        with open("./resource/coproducts/KuangxYonh.json", "w", encoding="utf-8") as f:
+        with open("./resource/coproducts/KuangxYonh_info.json", "w", encoding="utf-8") as f:
             f.write(json.dumps(KuangxYonh_json, indent=4, separators=(',', ': '), ensure_ascii=False))
+        print("\n- 《廣韻》信息已保存。")
     return KuangxYonh_json
 
 def create_SjengYonh(sjeng_mux, yonh_miuk, sjeng_json, yonh_json, IPA_json, Alphabet_rules, save=False):
     """
     創建包含聲韻信息的 json 格式數據。
 
-    將生成的表格保存在“./resource/coproducts/SjengYonh.json”路徑下，默認不保存。
+    將生成的表格保存在 "./resource/coproducts/SjengYonh.json "路徑下，默認不保存。
     """
     SjengYonh = []; SjengYonh_IPA = []; SjengYonh_Alphabet = []
     for i in range(len(sjeng_mux)):#[:10]:
         # print('\n', item)
-        [(sjeng, sjeng_IPA)] = sjeng_json[sjeng_mux[i]].items()
+        [(sjeng, [sjeng_IPA, _])] = sjeng_json[sjeng_mux[i]].items()
         SjengYonh.append(sjeng + yonh_json[yonh_miuk[i][0]][yonh_miuk[i][1]])
         SjengYonh_IPA.append(sjeng_IPA + IPA_json[yonh_miuk[i][0]][yonh_miuk[i][1]])
         # Alphabet = sjeng_IPA + IPA_json[yonh_miuk[i][0]][yonh_miuk[i][1]]
@@ -319,6 +340,7 @@ def create_SjengYonh(sjeng_mux, yonh_miuk, sjeng_json, yonh_json, IPA_json, Alph
     if save:
         with open("./resource/coproducts/SjengYonh.json", "w", encoding="utf-8") as f:
             f.write(json.dumps(SjengYonh_json, indent=4, separators=(',', ': '), ensure_ascii=False))
+        print("- 聲韻信息已保存。")
     return SjengYonh_json
 
 def create_KuangxYonh_json(KuangxYonh_text, SjengYonh_info, path=None):#"./KuangxYonh.json"):
@@ -339,32 +361,33 @@ def create_KuangxYonh_json(KuangxYonh_text, SjengYonh_info, path=None):#"./Kuang
             "SJENGYONH_IPA":SjengYonh_IPA[i], 
             "SJENGYONH_ALPHABET":SjengYonh_Alphabet[i], 
             "MEANING":meaning[i], 
-            "SJENGMUX_symbol":sjeng_mux[i],
+            "SJENGMUX_symbol":sjeng_mux[i], 
             "YONHMIUK_symbol":yonh_miuk[i]}
         )
     # json_text = json.dumps(json_text, indent=4, separators=(',', ': '), ensure_ascii=False)
     if path:
         with open(path, "w", encoding="utf-8") as f:
             f.write(json.dumps({"KuangxYonh": json_text}, indent=4, separators=(',', ': '), ensure_ascii=False))
-        # print("《廣韻》 json 文件已創建（可選）。\n")
+        print("\n《廣韻》 json 文件已創建。\n")
     return json_text
 
-def merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, path):
+def merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, yonh_Alphabet_json, path):
     """
     合并所有 json 格式的數據。
 
     將 json 格式的數據保存在指定路徑下。
     """
     json_text = {
-        "KuangxYonh": KuangxYonh_json,
-        "sjeng": sjeng_json,
-        "yonh": yonh_json,
-        "IPA": IPA_json
+        "KuangxYonh": KuangxYonh_json, 
+        "sjeng": sjeng_json, 
+        "yonh": yonh_json, 
+        "IPA": IPA_json, 
+        "Alphabet": yonh_Alphabet_json
     }
     json_text = json.dumps(json_text, indent=4, separators=(',', ': '), ensure_ascii=False)
     with open(path, "w", encoding="utf-8") as f:
         f.write(json_text)
-    print("json 文件已創建。\n")
+    print("總合 json 文件已創建。\n")
 
 
 # 已棄用
@@ -383,7 +406,7 @@ def merge_json(KuangxYonh_json, sjeng_json, yonh_json, IPA_json, path):
 #     conn = sqlite3.connect(path)
 #     cursor = conn.cursor()
 #     cursor.execute('''CREATE TABLE YONH(
-#         ID integer primary key autoincrement,
+#         ID integer primary key autoincrement, 
 #         CHAR varchar(20), 
 #         SJENGMUX varchar(20), 
 #         YONHMIUK varchar(20), 
